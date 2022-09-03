@@ -12,4 +12,15 @@ export default class CardService {
       console.log(e);
     }
   }
+
+  static async getById(id) {
+    try {
+      const response = await axios.get(
+        "https://rickandmortyapi.com/api/character/" + id
+      );
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }

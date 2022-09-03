@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CardService from "../API/CardService";
 import CardList from "../components/CardList";
 import Pagination from "../components/UI/pagination/Pagination";
-import "../style/App.css";
 import { getPagesArray } from "../utils/pages";
 
 function Cards() {
@@ -27,7 +26,7 @@ function Cards() {
   };
 
   return (
-    <div className="App">
+    <div className="cards">
       <CardList cards={cards} />
       <Pagination pagesArray={pagesArray} page={page} changePage={changePage} />
     </div>
