@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CardService from "../API/CardService";
 import CardList from "../components/CardList";
-import Mybutton from "../components/UI/button/Mybutton";
+import MyButton from "../components/UI/button/MyButton";
+
+const randomId = () => Math.floor(Math.random() * 826) + 1;
 
 const Random = () => {
   const [cards, setCards] = useState([]);
-  const randomId = () => Math.floor(Math.random() * 826) + 1;
 
   useEffect(() => {
     fetchCardsById();
@@ -13,7 +14,7 @@ const Random = () => {
 
   useMemo(() => {
     if (cards.length === 5) {
-      cards.shift();
+      setCards(cards.shift());
     }
   }, [cards]);
 
@@ -23,7 +24,7 @@ const Random = () => {
   }
   return (
     <div className="random">
-      <Mybutton onClick={fetchCardsById}>ADD</Mybutton>
+      <MyButton onClick={fetchCardsById}>ADD</MyButton>
       <CardList cards={cards} />
     </div>
   );

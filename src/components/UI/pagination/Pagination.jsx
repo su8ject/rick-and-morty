@@ -1,22 +1,31 @@
-import React from "react";
-import Mybutton from "../button/Mybutton";
+import MyButton from "../button/MyButton";
 
-const Pagination = ({ pagesArray, page, changePage, downPage, upPage }) => {
+const Pagination = ({
+  pagesArray,
+  page,
+  changePage,
+  downPage,
+  upPage,
+  totalPages,
+  setPage,
+}) => {
   return (
     <div className="page__wrapper">
-      <Mybutton onClick={() => downPage(page)}>&larr;</Mybutton>
-      {pagesArray
-        .filter((p) => p < page + 5 && p > page - 5)
-        .map((p) => (
-          <Mybutton
-            isActive={page === p ? true : false}
-            onClick={() => changePage(p)}
-            key={p}
-          >
-            {p}
-          </Mybutton>
-        ))}
-      <Mybutton onClick={() => upPage(page)}>&rarr;</Mybutton>
+      <MyButton onClick={() => downPage(page, totalPages, setPage)}>
+        &larr;
+      </MyButton>
+      {pagesArray.slice(page < 5 ? 0 : page - 5, page + 4).map((p) => (
+        <MyButton
+          isActive={page === p ? true : false}
+          onClick={() => changePage(p, setPage)}
+          key={p}
+        >
+          {p}
+        </MyButton>
+      ))}
+      <MyButton onClick={() => upPage(page, totalPages, setPage)}>
+        &rarr;
+      </MyButton>
     </div>
   );
 };

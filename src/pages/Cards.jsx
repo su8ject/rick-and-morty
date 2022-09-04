@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardService from "../API/CardService";
 import CardList from "../components/CardList";
 import Pagination from "../components/UI/pagination/Pagination";
-import { getPagesArray } from "../utils/pages";
+import { changePage, downPage, GetPagesArray, upPage } from "../utils/pages";
 
 function Cards() {
   const [cards, setCards] = useState([]);
   const [totalPages, setTotalPages] = useState();
   const [page, setPage] = useState(1);
-
-  let pagesArray = getPagesArray(totalPages);
 
   useEffect(() => {
     fetchCards();
@@ -21,17 +19,7 @@ function Cards() {
     setTotalPages(response.data.info.pages);
   }
 
-  const changePage = (page) => {
-    setPage(page);
-  };
-
-  const downPage = (page) => {
-    page === 1 ? setPage(42) : setPage(page - 1);
-  };
-
-  const upPage = (page) => {
-    page === 42 ? setPage(1) : setPage(page + 1);
-  };
+  let pagesArray = GetPagesArray(totalPages);
 
   return (
     <div className="cards">
@@ -42,6 +30,8 @@ function Cards() {
         changePage={changePage}
         downPage={downPage}
         upPage={upPage}
+        totalPages={totalPages}
+        setPage={setPage}
       />
     </div>
   );

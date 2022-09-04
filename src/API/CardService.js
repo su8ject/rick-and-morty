@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class CardService {
-  static async getAll(page = 1) {
+  static async getAll(page) {
     try {
       const response = await axios.get(
         "https://rickandmortyapi.com/api/character",

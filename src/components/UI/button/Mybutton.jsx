@@ -1,7 +1,6 @@
-import React from "react";
-import classes from "./Mybutton.module.css";
+import classes from "./MyButton.module.css";
 
-const Mybutton = ({ children, isActive, ...props }) => {
+const MyButton = ({ children, isActive, ...props }) => {
   const classList = `${classes.myBtn} ${isActive ? "active" : ""}`;
   return (
     <button {...props} className={classList}>
@@ -10,4 +9,4 @@ const Mybutton = ({ children, isActive, ...props }) => {
   );
 };
 
-export default Mybutton;
+export default MyButton;

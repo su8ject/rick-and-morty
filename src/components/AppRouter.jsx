@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Cards from "../pages/Cards";
 import Random from "../pages/Random";
