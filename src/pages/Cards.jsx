@@ -25,10 +25,24 @@ function Cards() {
     setPage(page);
   };
 
+  const downPage = (page) => {
+    page === 1 ? setPage(42) : setPage(page - 1);
+  };
+
+  const upPage = (page) => {
+    page === 42 ? setPage(1) : setPage(page + 1);
+  };
+
   return (
     <div className="cards">
       <CardList cards={cards} />
-      <Pagination pagesArray={pagesArray} page={page} changePage={changePage} />
+      <Pagination
+        pagesArray={pagesArray}
+        page={page}
+        changePage={changePage}
+        downPage={downPage}
+        upPage={upPage}
+      />
     </div>
   );
 }
