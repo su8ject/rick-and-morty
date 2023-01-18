@@ -10,8 +10,8 @@ export default class CardService {
       return response;
     } catch (e) {
       console.log(e);
-    }
-  }
+    };
+  };
 
   static async getById(id) {
     try {
@@ -21,6 +21,6 @@ export default class CardService {
       return response;
     } catch (e) {
       console.log(e);
-    }
-  }
-}
+    };
+  };
+};
